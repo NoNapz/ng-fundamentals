@@ -22,7 +22,7 @@ export class EventService {
     }
 
     saveEvent(event) {
-      let options = { headers: new HttpHeaders({
+      const options = { headers: new HttpHeaders({
         'Content-Type': 'application/json'
       }) }
       return this.http.post<IEvent>('/api/events', event, options)

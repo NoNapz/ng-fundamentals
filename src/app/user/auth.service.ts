@@ -11,11 +11,11 @@ export class AuthService {
     constructor(private http: HttpClient) {}
 
     loginUser(userName: string, password: string) {
-        let loginInfo = {
+        const loginInfo = {
             username: userName,
             password: password
         };
-        let options = {
+        const options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json'
             })
@@ -46,7 +46,7 @@ export class AuthService {
         this.currentUser.firstName = firstName
         this.currentUser.lastName = lastName
 
-        let options = { headers: new HttpHeaders({
+        const options = { headers: new HttpHeaders({
             'Content-Type': 'application/json'
         }) };
         return this.http.put(`/api/users/${this.currentUser.id}`, this.currentUser, options);
@@ -54,10 +54,9 @@ export class AuthService {
 
     logout() {
         this.currentUser = undefined;
-        let options = { headers: new HttpHeaders({
+        const options = { headers: new HttpHeaders({
             'Content-Type': 'application/json'
         }) };
         return this.http.post('/api/logout', {}, options);
     }
-
 }
